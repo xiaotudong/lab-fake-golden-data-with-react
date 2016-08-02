@@ -23,6 +23,7 @@
             float: left;
             text-align: center;
         }
+
         button {
             width: 50px;
             height: 30px;
@@ -30,6 +31,12 @@
             cursor: pointer;
             left: 50%;
         }
+
+        input {
+            width: 200px;
+            height: 20px;
+        }
+
 
     </style>
 </head>
@@ -47,35 +54,54 @@
                 flag: true
             };
         },
-        addText() {
+        addText: function () {
             this.setState({
                 froms: getNewFroms(this.state.froms, 0),
+                index: this.state.index++
+            })
+        },
+        addDate: function () {
+            this.setState({
+                froms: getNewFroms(this.state.froms, 1),
                 index: this.state.index++
             })
         },
         render: function () {
             return (
                     <div>
-                        <div id = "header">
+                        <div id="header">
                             <button type="submit">预览</button>
                         </div>
 
-                        <div id = "display">
-                                {this.state.froms.map((from, index) => {
-                                        return <div>
-                                            <input type="text"/>
-                                        </div>
-                                })}
+                        <div id="display">
+                            {this.state.froms.map((from, index) => {
+                                if (from === 0) {
+                                    return (
+                                            <div>
+                                                <input type="text"/>
+                                            </div>
+                                    )
+                                } else {
+                                    return (
+                                            <div>
+                                                <input type="date"/>
+                                            </div>
+                                    )
+                                }
+                            })
+                            }
 
                         </div>
 
                         <div id="select">
-                            <button onClick={() => this.addText()}>文本</button>
+                            <div>
+                                <button onClick={() => this.addText()}>文本</button>
+                            </div>
                             <br /><br />
-                            <button >日 期</button>
+                            <button onClick={() => this.addDate()}>日期</button>
                         </div>
 
-                         </div>
+                    </div>
             );
         }
     });

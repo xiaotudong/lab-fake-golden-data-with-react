@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>props</title>
+    <title>表单</title>
     <style type="text/css">
         div#header {
             background-color: #99bbbb;
@@ -17,12 +17,18 @@
             text-align: center;
         }
 
+        div#display {
+            height: 1000px;
+            width: 50%;
+            float: left;
+            text-align: center;
+        }
         button {
             width: 50px;
             height: 30px;
             border: 0px;
             cursor: pointer;
-            left:50%;
+            left: 50%;
         }
 
     </style>
@@ -32,32 +38,47 @@
 <script src="../build/react.js"></script>
 <script src="../build/react-dom.js"></script>
 <script src="../build/browser.min.js"></script>
+<script src="../views.js"></script>
 <script type="text/babel">
     var Select = React.createClass({
-
+        getInitialState: function () {
+            return {
+                froms: [],
+                flag: true
+            };
+        },
+        addText() {
+            this.setState({
+                froms: getNewFroms(this.state.froms, 0),
+                index: this.state.index++
+            })
+        },
         render: function () {
             return (
                     <div>
-                        <div id="header">
+                        <div id = "header">
                             <button type="submit">预览</button>
                         </div>
 
-                        <div id="select">
-                            <form>
-                                <br /><br /><br /><br />
-                                <input type="radio" name="text" value="文本"/>文本
-                                <br />
-                                <input type="radio" name="time" value="时间"/>时间
-                            </form>
-                            <br /><br /><br /><br />
-                            <button type="submit">提交</button>
+                        <div id = "display">
+                                {this.state.froms.map((from, index) => {
+                                        return <div>
+                                            <input type="text"/>
+                                        </div>
+                                })}
+
                         </div>
 
-                    </div>
+                        <div id="select">
+                            <button onClick={() => this.addText()}>文本</button>
+                            <br /><br />
+                            <button >日 期</button>
+                        </div>
+
+                         </div>
             );
         }
     });
-
     ReactDOM.render(
             <div>
                 <Select/>

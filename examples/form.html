@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>props</title>
+</head>
+<body>
+<div id='example'></div>
+<script src="../build/react.js"></script>
+<script src="../build/react-dom.js"></script>
+<script src="../build/browser.min.js"></script>
+<script type="text/babel">
+    var Select = React.createClass({
+        text: function () {
+            return(
+                    
+            )
+        },
+        render: function () {
+            return (
+                    <div>
+                        <form>
+                            <input type="radio" name="text" value="文本"/>文本
+                            <br />
+                            <input type="radio" name="time" value="时间"/>时间
+                        </form>
+                        <button type="submit">提交</button>
+                    </div>
+            );
+        }
+    });
+
+    ReactDOM.render(
+            <div>
+                <Select/>
+            </div>,
+            document.getElementById('example')
+    );
+</script>
+</body>
+</html>

@@ -60,10 +60,15 @@
                 index: this.state.index++
             })
         },
-        addDate: function () {
+        addDate: function() {
             this.setState({
                 froms: getNewFroms(this.state.froms, 1),
                 index: this.state.index++
+            })
+        },
+        deleteFrom: function(index) {
+            this.setState({
+                froms: deleteFrom(this.state.froms, index)
             })
         },
         render: function () {
@@ -79,12 +84,14 @@
                                     return (
                                             <div>
                                                 <input type="text"/>
+                                                <button onClick={() => this.deleteFrom(index)}>删除</button>
                                             </div>
                                     )
                                 } else {
                                     return (
                                             <div>
                                                 <input type="date"/>
+                                                <button onClick={() => this.deleteFrom(index)}>删除</button>
                                             </div>
                                     )
                                 }

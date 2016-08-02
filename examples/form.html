@@ -3,6 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>props</title>
+    <style type="text/css">
+        div#header {
+            background-color: #99bbbb;
+            text-align: center;
+        }
+
+        div#select {
+            background-color: #EEEEEE;
+            height: 1000px;
+            width: 50%;
+            float: right;
+            text-align: center;
+        }
+
+        button {
+            width: 50px;
+            height: 30px;
+            border: 0px;
+            cursor: pointer;
+            left:50%;
+        }
+
+    </style>
 </head>
 <body>
 <div id='example'></div>
@@ -11,20 +34,25 @@
 <script src="../build/browser.min.js"></script>
 <script type="text/babel">
     var Select = React.createClass({
-        text: function () {
-            return(
-                    
-            )
-        },
+
         render: function () {
             return (
                     <div>
-                        <form>
-                            <input type="radio" name="text" value="文本"/>文本
-                            <br />
-                            <input type="radio" name="time" value="时间"/>时间
-                        </form>
-                        <button type="submit">提交</button>
+                        <div id="header">
+                            <button type="submit">预览</button>
+                        </div>
+
+                        <div id="select">
+                            <form>
+                                <br /><br /><br /><br />
+                                <input type="radio" name="text" value="文本"/>文本
+                                <br />
+                                <input type="radio" name="time" value="时间"/>时间
+                            </form>
+                            <br /><br /><br /><br />
+                            <button type="submit">提交</button>
+                        </div>
+
                     </div>
             );
         }
